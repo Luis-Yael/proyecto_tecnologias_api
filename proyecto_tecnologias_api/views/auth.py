@@ -50,13 +50,13 @@ class CustomAuthToken(ObtainAuthToken):
             token, created = Token.objects.get_or_create(user=user)
 
             if role_names == 'alumno':
-                #alumno = Alumnos.objects.filter(user=user).first()
+                alumno = Alumnos.objects.filter(user=user).first()
                 alumno = AlumnoSerializer(alumno).data
                 alumno["token"] = token.key
                 alumno["rol"] = "alumno"
                 return Response(alumno,200)
             if role_names == 'maestro':
-                #maestro = Maestros.objects.filter(user=user).first()
+                maestro = Maestros.objects.filter(user=user).first()
                 maestro = MaestroSerializer(maestro).data
                 maestro["token"] = token.key
                 maestro["rol"] = "maestro"
