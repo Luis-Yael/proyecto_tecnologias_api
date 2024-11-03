@@ -30,12 +30,14 @@ import string
 import random
 import json
 
-class Userme(generics.CreateAPIView):
+class AdminAll(generics.CreateAPIView):
+    #Esta función es esencial para todo donde se requiera autorización de inicio de sesión (token)
     permission_classes = (permissions.IsAuthenticated,)
     def get(self, request, *args, **kwargs):
-        user = request.user
-        #TODO: Regresar perfil del usuario
-        return Response({})
+        admin = Administradores.objects.filter(user__is_active = 1).order_by("id")
+        lista = AdminSerializer(admin, many=True).data
+        
+        return Response(lista, 200)
 
 class AdminView(generics.CreateAPIView):
     #Obtener usuario por ID

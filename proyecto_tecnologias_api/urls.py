@@ -26,10 +26,14 @@ urlpatterns = [
         path('bootstrap/version', bootstrap.VersionView.as_view()),
      #Create Admin
         path('admin/', users.AdminView.as_view()),
+    #Admin Data
+        path('lista-admins/', users.AdminAll.as_view()),
     #Create Alumno
         path('alumnos/', alumnos.AlumnosView.as_view()),
     #Create Maestro
         path('maestros/', maestros.MaestrosView.as_view()),
+    #Maestro Data
+        path('lista-maestros/', maestros.MaestrosAll.as_view()),
     #Login
         path('token/', auth.CustomAuthToken.as_view()),
     #Logout
