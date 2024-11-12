@@ -98,7 +98,6 @@ class AdminView(generics.CreateAPIView):
     
 class AdminsViewEdit(generics.CreateAPIView):
     permission_classes = (permissions.IsAuthenticated,)
-    #TODO:Esto se los explicaré después
     #Contar el total de cada tipo de usuarios
     def get(self, request, *args, **kwargs):
         #Obtener total de admins
